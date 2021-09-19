@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath discussion_forum.wsgi
+web: gunicorn --pythonpath discussion_forum discussion_forum.wsgi
