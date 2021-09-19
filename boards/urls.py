@@ -11,4 +11,3 @@ urlpatterns = [
 	path('<int:board_id>/topic/<int:topic_id>/post/<int:post_id>/edit/', boards.views.PostEdit_View.as_view(), name='post_edit_url'), #post edit url
 
 ]
-

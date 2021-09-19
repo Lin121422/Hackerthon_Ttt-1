@@ -21,13 +21,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+''' original version '''
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+''' original version '''
+
+'''  0905 Deploying Django to Heroku With Docker '''
+SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
+
+# DEBUG = int(os.environ.get('DEBUG', default=0))
+DEBUG=True  # 介面跑掉，用這行可以調回來
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+'''  0905 Deploying Django to Heroku With Docker '''
 
 
 # Application definition
@@ -90,10 +102,26 @@ WSGI_APPLICATION = 'discussion_forum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+    # 'default': dj_database_url.config(default=config('DATABASE_URL'))
+# }
+
+
+'''  0905 Deploying Django to Heroku With Docker '''
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': "D:\\台積電實習\\實習事項\\黑客松\\Hackerthon_Ttt-1\\db.sqlite3",
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
+# github
+# DATABASES = {
+    # 'default': dj_database_url.config(default="sqlite:///db.sqlite3")
+# }
+
+'''  0905 Deploying Django to Heroku With Docker '''
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

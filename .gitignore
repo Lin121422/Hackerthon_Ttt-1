@@ -14,3 +14,4 @@ uploads/
 dev_secret.txt
 /boards/migrations/
 .env
+staticfiles

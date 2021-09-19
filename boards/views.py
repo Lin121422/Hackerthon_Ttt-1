@@ -202,5 +202,5 @@ class PostEdit_View(UpdateView):
 		pageno = self.topic.get_pageno_of_post(post)
 		newtopicurl_pageid = '{url}?page={pageno}#{postid}'.format(url=topicpageurl, pageno=pageno, postid=post.id)
 		return redirect(newtopicurl_pageid)
-
+        
 
